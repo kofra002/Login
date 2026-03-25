@@ -13,25 +13,25 @@ import (
 )
 
 var (
-	ErrInvalidHash		= errors.New("the encoded hash is not in the right format")
-	ErrIncompatibleVersion	= errors.New("incompatible version of  argon2")
+	ErrInvalidHash         = errors.New("the encoded hash is not in the right format")
+	ErrIncompatibleVersion = errors.New("incompatible version of  argon2")
 )
 
 type params struct {
-	memory		uint32
-	iterations	uint32
-	parallelism	uint8
-	saltLength	uint32
-	keyLength	uint32
+	memory      uint32
+	iterations  uint32
+	parallelism uint8
+	saltLength  uint32
+	keyLength   uint32
 }
 
 func main() {
-	p := &params {
-	memory:		64*1024,
-	iterations:	3,
-	parallelism:	2,
-	saltLength:	16,
-	keyLength:	32,
+	p := &params{
+		memory:      64 * 1024,
+		iterations:  3,
+		parallelism: 2,
+		saltLength:  16,
+		keyLength:   32,
 	}
 
 	fmt.Println("Hvilket passord ønsker du: ")
@@ -59,15 +59,14 @@ func main() {
 	fmt.Printf("Match: %v\n", match)
 }
 
-
 func generateHash(password string, p *params) (encodedHash string, err error) {
 	salt, err := generateRandomBytes(p.saltLength)
 	if err != nil {
-		return "", err 
+		return "", err
 	}
 
 	hash := argon2.IDKey([]byte(password), salt, p.iterations, p.memory, p.parallelism, p.keyLength)
-	
+
 	b64Salt := base64.RawStdEncoding.EncodeToString(salt)
 	b64Hash := base64.RawStdEncoding.EncodeToString(hash)
 
