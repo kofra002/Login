@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="forms">
+        <div class="container">
+            <div class="size">
+                <form id="serverForm">
+                    <label for="server"><b>Server</b></label>
+                    <input type="text" placeholder="URL" name="server" required>
+
+                    <button type="submit">Set</button>
+                </form>
+                <div id="serverLog">
+                    <label></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="size">
+                <form id="loginForm">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
+
+                    <button type="submit" value="login">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./login.js"></script>
+</body>
+</html>

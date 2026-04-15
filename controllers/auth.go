@@ -40,7 +40,7 @@ func Login(c *gin.Context) {
 	}
 
 	if err := config.DB.Where("username = ?", input.Username).First(&user).Error; err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid crednetials"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid username"})
 		return
 	}
 
